@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Fredoka', sans-serif;
+  background-color: #dae0e6;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: whitesmoke;
+}
+
+.user_info {
+  display: flex;
+  align-items: center;
+}
+
+.home_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.post_form {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  padding: 6px;
+  margin: 10px;
+  background-color: whitesmoke;
+}
+
+input[type='text'] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+}
+
+.user_post {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  padding: 10px;
+  margin: 10px;
+
+  background-color: whitesmoke;
+}
+
+.post_info {
+  display: flex;
+  width: 100%;
+}
+
+.post_username,
+.post_date {
+  margin-left: 5px;
+  color: rgb(165, 163, 163);
+}
+
+.post_body {
+  width: 100%;
+}
