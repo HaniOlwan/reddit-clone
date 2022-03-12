@@ -20,6 +20,9 @@ nav {
   display: flex;
   align-items: center;
 }
+.post_avatar {
+  height: 20px;
+}
 
 .home_content {
   display: flex;
