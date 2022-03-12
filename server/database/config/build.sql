@@ -24,4 +24,5 @@ BEGIN;
     post_id INT,
     FOREIGN KEY (post_id) REFERENCES posts(id));
 
+
 COMMIT;
