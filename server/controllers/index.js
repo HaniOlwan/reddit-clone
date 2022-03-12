@@ -1,5 +1,3 @@
-const homeController = (req, res) => {
-  res.json('Hello from home Controller');
-};
+const homeController = require('./homeController');
 
 module.exports = homeController;
