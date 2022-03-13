@@ -6,19 +6,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reddit</title>
+    <link rel="icon" href="images/reddit-logo.PNG" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="stylesheets/index.css">
+
 </head>
 
 <body>
-    <form>
-        <h1>Register</h1>
-        <label for="name">Name</label>
-        <input type="text" id="name">
-        <label for="name">email</label>
-        <input type="text" id="name">
-        <label for="name">password</label>
-        <input type="text" id="name">
-        <button type="submit">Submit</button>
-    </form>
+    <nav>
+        <img src="images/reddit-1.svg" alt="LOGO HERE" height="26px">
+        <div class="user_info">
+            <img src="images/avatar.png" alt="AVATAR HERE" height="40px">
+            <div class="username">heenoow</div>
+        </div>
+    </nav>
+    <section class="home_content">
+        <form id="post_form">
+            <div class="post_form">
+                <img src="images/avatar.png" alt="AVATAR HERE" height="40px">
+                <input type="text" id="post" name="post" placeholder="Create Post">
+                <button id="post_submit" class="post_submit_button" type="submit">Post</button>
+            </div>
+        </form>
+
+        <div class="user_post">
+            <div class="post_info">
+                <img class="post_avatar" src="images/avatar.png" alt="POST AVATAR HERE" height="20px">
+                <small class="post_username">u/heenoow</small>
+                <small class="post_date">56 min ago</small>
+            </div>
+            <div class="post_body">
+                <h3>When I was a kid, me and my older brother smashed the windows to a car.</h3>
+                <p>
+                    I can’t really remember how old we were. I was probably around 6-7. My brother was 8-9. (Lets call
+                    him jay). And we decided to throw rocks and bash the windows of a car. The car was an old family
+                    van, and it was abandoned. It hadn’t seen use in years. </p>
+            </div>
+        </div>
+    </section>
+    <script src="post.js"></script>
+    <script src="home.js"></script>
 </body>
 
 </html>
