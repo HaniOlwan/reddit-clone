@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Fredoka', sans-serif;
+  background-color: #dae0e6;
+}
+
+.background_image {
+  background-image: url(https://www.redditstatic.com/accountmanager/bbb584033aa89e39bad69436c504c9bd.png);
+  height: 100vh;
+  width: 156px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.content {
+  display: flex;
+}
+
+.register_form {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  padding: 20px;
+  width: 30%;
+}
+
+.title {
+  font-size: 18px;
+}
+
+.text_link {
+  color: #3394dc;
+  text-decoration: none;
+}
+
+.text_link:hover {
+  color: #58aae9;
+}
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+}
+
+.inputText {
+  font-size: 14px;
+  width: 200px;
+  height: 35px;
+}
+
+.inputText::placeholder {
+  font-size: 12px;
+}
+
+.register_input {
+  display: flex;
+  flex-direction: column;
+}
+
+.register_button {
+  border-radius: 5px;
+  border: none;
+  width: 200px;
+  height: 35px;
+  color: whitesmoke;
+  background-color: #0079d3;
+}
