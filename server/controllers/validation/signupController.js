@@ -1,10 +1,17 @@
-const { hashPassword, handleError } = require('../../utils/helpers');
+const { registerUser } = require('../../database/queries/user/userQuery');
+const { hashPassword, handleError, createUserToken } = require('../../utils/helpers');
 
 const signupController = (req, res) => {
   const { email, username, password } = req.body;
-  hashPassword('qwerty').then((hashedPassword) => {
-    console.log(hashedPassword);
-  }); //Hash password
+  hashPassword(password)
+    .then((hashedPassword) => {
+      registerUser(email, username, hashedPassword)
+        .then((user) => {
+          res.cookie('token', createUserToken(user.rows[0])).redirect('/users');
+        })
+        .catch('User Already exists');
+    })
+    .catch('Password Couldnt be hashed');
 };
 
 module.exports = signupController;

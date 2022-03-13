@@ -1,4 +1,7 @@
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+const { ACCESS_TOKEN_KEY } = require('./../../config');
 
 const hashPassword = (password) =>
   new Promise((resolve, reject) => {
@@ -6,12 +9,15 @@ const hashPassword = (password) =>
       if (err) {
         reject(err);
       } else {
-        resolve({
-          password: hashedPassword,
-        });
+        resolve(hashedPassword);
       }
     });
   });
+
+const createUserToken = (payload) => {
+  const token = jwt.sign(payload, process.env.ACCESS_TOKEN_KEY);
+  return token;
+};
 
 const handleError = (data) => {
   const { msg, status } = data;
@@ -20,4 +26,4 @@ const handleError = (data) => {
   throw error;
 };
 
-module.exports = { handleError, hashPassword };
+module.exports = { handleError, hashPassword, createUserToken };
