@@ -16,19 +16,18 @@ nav {
   background-color: whitesmoke;
 }
 
+.home_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
 .user_info {
   display: flex;
   align-items: center;
 }
 .post_avatar {
   height: 20px;
-}
-
-.home_content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
 }
 
 .post_form {
@@ -40,6 +39,20 @@ nav {
   background-color: whitesmoke;
 }
 
+.post_submit_button {
+  border: none;
+  color: white;
+  padding: 14px 5px;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 30%;
+  line-height: 12px;
+  min-height: 30px;
+  min-width: 60px;
+  background-color: #1484d7;
+}
 input[type='text'] {
   width: 100%;
   padding: 12px 20px;

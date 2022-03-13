@@ -1,5 +1,15 @@
-for (let index = 0; index < 5; index++) {
-  const homeContent = document.querySelector('.home_content');
+const renderPosts = () => {
+  fetch('/api/v1/posts')
+    .then((data) => data.json())
+    .then((posts) =>
+      posts.forEach((element) => {
+        createPost(element);
+      })
+    );
+};
+const homeContent = document.querySelector('.home_content');
+
+const createPost = (info) => {
   const post = document.createElement('div');
   post.className = 'user_post';
   const postInfo = document.createElement('div');
@@ -10,18 +20,16 @@ for (let index = 0; index < 5; index++) {
   avatar.alt = 'POST AVATAR HERE';
   const username = document.createElement('small');
   username.className = 'post_username';
-  username.textContent = 'u/heenoow';
+  username.textContent = `u/${info.username}`;
   const postDate = document.createElement('small');
   postDate.className = 'post_date';
-  postDate.textContent = '56 min ago';
+  postDate.textContent = info.created_at;
   const postBody = document.createElement('div');
   postBody.className = 'post_body';
   const postTitle = document.createElement('h3');
-  postTitle.textContent =
-    'When I was a kid, me and my older brother smashed the windows to a car.';
+  postTitle.textContent = info.title;
   const postDesc = document.createElement('p');
-  postDesc.textContent =
-    ' I cant really remember how old we were. I was probably around 6-7. My brother was 8-9. (Lets call him jay). And we decided to throw rocks and bash the windows of a car. The car was an old family van, and it was abandoned. It hadnt seen use in years.';
+  postDesc.textContent = info.body;
   postInfo.appendChild(avatar);
   postInfo.appendChild(username);
   postInfo.appendChild(postDate);
@@ -30,4 +38,6 @@ for (let index = 0; index < 5; index++) {
   postBody.appendChild(postDesc);
   post.appendChild(postBody);
   homeContent.appendChild(post);
-}
+};
+
+renderPosts();
