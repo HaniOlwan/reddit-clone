@@ -1,8 +1,14 @@
-const post = document.querySelector('#post_submit');
+const post = document.querySelector('#post_form');
 
 post.addEventListener('submit', (e) => {
   e.preventDefault();
-  const obj = e.target.input;
-  console.log(obj);
-  console.log('WOW YOUR HAVE SUBMITED A POST');
+  const input = e.target.post.value;
+  fetch('/api/v11/post', {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ input }),
+  });
 });

@@ -1,5 +1,5 @@
 const postController = (req, res) => {
-  console.log('WOW YOURE IN POST CONTROLLER');
+  console.log(req.body);
 };
 
 module.exports = postController;
