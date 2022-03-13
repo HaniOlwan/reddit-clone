@@ -3,10 +3,12 @@ BEGIN;
     
     CREATE TABLE users (
         id SERIAL PRIMARY KEY,
-        username VARCHAR(255) NOT NULL
+        username VARCHAR(255) NOT NULL UNIQUE,
+        email VARCHAR(255) NOT NULL UNIQUE,
+        password VARCHAR(255) NOT NULL
     );
 
-    INSERT INTO users(username) VALUES ('hani3l'),('adam3l');
+    INSERT INTO users(username,email,password) VALUES ('hani3l','hani@gmail.com','$2a$10$urn5eKcywoWsV1pXS9Dp/.KMwkv6PjZd1nBD7JrhIZhvFiDCgMly'),('adam3l','adam@gmail.com','$2a$10$urn5eKcywoWsV1pXS9Dp/.KMwkv6PjZd1nBD7JrhIZhvFiDCgMly');
 
     CREATE TABLE posts (
     id SERIAL PRIMARY KEY,

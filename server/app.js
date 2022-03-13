@@ -11,4 +11,14 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.use(router);
 
+// app.use((req, res, next) => {
+//   const err = handleError({ msg: 'Page Not found', status: '400' });
+//   console.log(err);
+//   // next(err);
+// });
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+  res.send(err);
+});
+
 module.exports = app;
