@@ -39,5 +39,4 @@ const createPost = (info) => {
   post.appendChild(postBody);
   homeContent.appendChild(post);
 };
-
 renderPosts();

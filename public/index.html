@@ -20,11 +20,13 @@
         </div>
     </nav>
     <section class="home_content">
-        <div class="post_form">
-            <img src="images/avatar.png" alt="AVATAR HERE" height="40px">
-            <input type="text" id="post" name="post" placeholder="Create Post">
-            <button class="post_submit_button">Post</button>
-        </div>
+        <form id="post_form">
+            <div class="post_form">
+                <img src="images/avatar.png" alt="AVATAR HERE" height="40px">
+                <input type="text" id="post" name="post" placeholder="Create Post">
+                <button id="post_submit" class="post_submit_button" type="submit">Post</button>
+            </div>
+        </form>
 
         <div class="user_post">
             <div class="post_info">
@@ -41,6 +43,7 @@
             </div>
         </div>
     </section>
+    <script src="post.js"></script>
     <script src="home.js"></script>
 </body>
 
