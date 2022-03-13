@@ -77,3 +77,10 @@ input:focus {
   color: whitesmoke;
   background-color: #0079d3;
 }
+.login_text_link {
+  text-decoration: none;
+  color: #0e6fb9;
+}
+.login_text_link:hover {
+  color: #208ee2;
+}
