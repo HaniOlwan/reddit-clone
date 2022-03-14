@@ -6,5 +6,9 @@ signupForm.addEventListener('submit', (e) => {
     username: e.target.username.value,
     password: e.target.password.value,
   };
-  fetchData('/api/v1/signup', 'POST', data);
+  fetchData('/api/v1/signup', 'POST', data)
+    .then((response) => response.json())
+    .then((result) => {
+      return result.status === 200 ? (window.location.href = '/home') : '';
+    });
 });
