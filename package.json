@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node cross_env NODE_ENV=production server/index.js",
-    "dev": "nodemon cross_env NODE_ENV=dev server/index.js",
+    "dev": "nodemon server/index.js",
     "test": "cross-env NODE_ENV=test jest"
   },
   "repository": {
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/HaniOlwan/reddit-clone#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
