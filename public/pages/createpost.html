@@ -31,17 +31,18 @@
                 <img class="post_avatar" src="../images/avatar.png" alt="POST AVATAR HERE" height="20px">
                 <small class="post_username">u/heenoow</small>
             </div>
-
-
             <div class="post_body">
-                <form>
-                    <input type="text" id="post" name="post" placeholder="Title">
-                    <textarea placeholder="Text (optional)"></textarea>
+                <form id="post_form">
+                    <input type="text" id="post" name="title" placeholder="Title">
+                    <textarea name="body" placeholder="Text (optional)"></textarea>
+                    <button class="post_submit_button">Post</button>
                 </form>
             </div>
-            <button id="post_submit" class="post_submit_button" type="submit">Post</button>
         </div>
     </section>
+    <script src="../javascript/createpost.js"></script>
+    <script src="../javascript/helpers.js"></script>
+
 </body>
 
 </html>
