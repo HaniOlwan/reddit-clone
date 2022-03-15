@@ -8,14 +8,26 @@ logout.addEventListener('click', (e) => {
   });
 });
 
+let page = 1;
 const renderPosts = () => {
-  fetch('/api/v1/posts')
+  fetch(`/api/v1/posts?page=${page}`)
     .then((data) => data.json())
-    .then((posts) =>
-      posts.forEach((element) => {
-        createPost(element);
-      })
-    );
+    .then((posts) => {
+      if (posts && posts.length) {
+        posts.forEach((element) => {
+          createPost(element);
+        });
+        page++;
+      } else {
+        page = -1;
+      }
+    });
+};
+
+window.onscroll = function (ev) {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    if (page !== -1) renderPosts();
+  }
 };
 
 const homeContent = document.querySelector('.home_content');
