@@ -1,9 +1,9 @@
 const connection = require('../../config/connection');
 
-const findUser = (email, username) => {
-  const sql = 'SELECT email FROM users WHERE email=$1 OR username=$2;';
-  const values = [email, username];
-  connection.query(sql, values);
+const findUser = (email) => {
+  const sql = 'SELECT exists (SELECT 1 FROM users WHERE email = $1 LIMIT 1);';
+  const values = [email];
+  return connection.query(sql, values);
 };
 
 const registerUser = (email, username, password) => {
