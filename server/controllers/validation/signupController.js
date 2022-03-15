@@ -2,17 +2,17 @@ const { findUser, registerUser } = require('../../database/queries/user/userQuer
 const { hashPassword, createUserToken } = require('../../utils/helpers');
 
 const signupController = (req, res) => {
-  const { email, username, password } = req.body;
+  const { name, email, password } = req.body;
   findUser(email)
     .catch('User already exists')
     .then(() =>
       hashPassword(password)
         .then((hashedPassword) => {
-          registerUser(email, username, hashedPassword)
+          registerUser(name, email, hashedPassword)
             .then((user) => {
               res.cookie('token', createUserToken(user.rows[0]));
               res.json({
-                msg: `Welcome ${username}`,
+                msg: `Welcome ${name}`,
                 status: 200,
               });
             })
