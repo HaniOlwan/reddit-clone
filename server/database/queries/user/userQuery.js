@@ -18,4 +18,10 @@ const createPost = (title, body, userId) => {
   return connection.query(sql, values);
 };
 
-module.exports = { findUser, registerUser, createPost };
+const getUser = (email) => {
+  const sql = 'SELECT email,password FROM users WHERE email = $1';
+  const values = [email];
+  return connection.query(sql, values);
+};
+
+module.exports = { findUser, registerUser, createPost, getUser };

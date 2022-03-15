@@ -5,7 +5,10 @@ const signupController = require('../controllers/validation');
 const ensureAuthenticated = require('../utils/ensureAuthenticated');
 const logoutUser = require('../controllers/logoutController');
 const page = require('../controllers/pagesController');
+const signinController = require('../controllers/validation/signinController');
 
+router.get('/signin', page.signinPage);
+router.post('/api/v1/signin', signinController);
 router.get('/signup', page.signupPage);
 router.post('/api/v1/signup', signupController);
 router.post('/api/v1/user/logout', logoutUser);
