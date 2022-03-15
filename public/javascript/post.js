@@ -1,3 +1,6 @@
+const postForm = () => {
+  window.location.href = '/post';
+};
 const post = document.querySelector('#post_form');
 
 post.addEventListener('submit', (e) => {
