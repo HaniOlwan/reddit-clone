@@ -6,10 +6,9 @@ const findUser = (email) => {
   return connection.query(sql, values);
 };
 
-const registerUser = (email, username, password) => {
-  const sql =
-    'INSERT INTO users (email,username,password) VALUES ($1,$2,$3) RETURNING *;';
-  const values = [email, username, password];
+const registerUser = (email, password) => {
+  const sql = 'INSERT INTO users (email,password) VALUES ($1,$2) RETURNING *;';
+  const values = [email, password];
   return connection.query(sql, values);
 };
 
