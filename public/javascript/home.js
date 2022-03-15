@@ -7,6 +7,7 @@ const renderPosts = () => {
       })
     );
 };
+
 const homeContent = document.querySelector('.home_content');
 
 const createPost = (info) => {

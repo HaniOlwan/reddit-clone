@@ -4,4 +4,8 @@ const homePage = (req, res) => {
   res.sendFile(path.join(__dirname, '..', '..', 'public', 'pages', 'index.html'));
 };
 
-module.exports = { homePage };
+const signupPage = (req, res) => {
+  res.sendFile(path.join(__dirname, '..', '..', 'public', 'pages', 'signup.html'));
+};
+
+module.exports = { homePage, signupPage };
