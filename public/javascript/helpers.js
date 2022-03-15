@@ -1,6 +1,6 @@
 const fetchData = (path, method, data) =>
-  fetch('api/v1/signup', {
-    method: 'POST',
+  fetch(path, {
+    method: method,
     headers: {
       'Content-type': 'application/json',
     },

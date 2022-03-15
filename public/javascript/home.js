@@ -1,3 +1,13 @@
+const logout = document.querySelector('#logout');
+logout.addEventListener('click', (e) => {
+  e.preventDefault();
+  fetch('/api/v1/user/logout', {
+    method: 'POST',
+  }).then(() => {
+    window.location.href = '/';
+  });
+});
+
 const renderPosts = () => {
   fetch('/api/v1/posts')
     .then((data) => data.json())
