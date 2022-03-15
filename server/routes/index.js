@@ -12,6 +12,6 @@ router.post('/api/v1/user/logout', logoutUser);
 router.get('/', ensureAuthenticated, page.homePage);
 router.get('/api/v1/posts', homeController); // test
 router.get('/post', ensureAuthenticated, page.createPostPage);
-router.post('/api/v1/post', postController);
+router.post('/api/v1/user/post', postController);
 
 module.exports = router;

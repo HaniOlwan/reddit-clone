@@ -5,5 +5,5 @@ postForm.addEventListener('submit', (e) => {
     title: e.target.title.value,
     body: e.target.body.value.replace(/\s/g, ' ').trim(),
   };
-  fetchData('/api/v1/post', 'POST', data);
+  fetchData('/api/v1/user/post', 'POST', data);
 });
