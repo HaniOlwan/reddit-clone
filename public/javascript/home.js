@@ -31,7 +31,7 @@ const createPost = (info) => {
   avatar.alt = 'POST AVATAR HERE';
   const username = document.createElement('small');
   username.className = 'post_username';
-  username.textContent = `u/${info.username}`;
+  username.textContent = `u/${info.name}`;
   const postDate = document.createElement('small');
   postDate.className = 'post_date';
   postDate.textContent = info.created_at;
