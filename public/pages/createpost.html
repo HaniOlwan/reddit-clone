@@ -8,7 +8,6 @@
     <title>Reddit</title>
     <link rel="icon" href="../images/reddit-1.svg" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="../stylesheets/index.css">
-
 </head>
 
 <body>
@@ -26,32 +25,23 @@
         </div>
     </nav>
     <section class="home_content">
-        <form id="post_form">
-            <div class="post_form">
-                <img src="../images/avatar.png" alt="AVATAR HERE" height="40px">
-                <input type="text" id="post" name="post" placeholder="Create Post">
-                <button id="post_submit" class="post_submit_button" type="submit">Post</button>
-            </div>
-        </form>
-
+        <h1>Create a post</h1>
         <div class="user_post">
             <div class="post_info">
                 <img class="post_avatar" src="../images/avatar.png" alt="POST AVATAR HERE" height="20px">
                 <small class="post_username">u/heenoow</small>
-                <small class="post_date">56 min ago</small>
             </div>
+
+
             <div class="post_body">
-                <h3>When I was a kid, me and my older brother smashed the windows to a car.</h3>
-                <p>
-                    I can’t really remember how old we were. I was probably around 6-7. My brother was 8-9. (Lets call
-                    him jay). And we decided to throw rocks and bash the windows of a car. The car was an old family
-                    van, and it was abandoned. It hadn’t seen use in years. </p>
+                <form>
+                    <input type="text" id="post" name="post" placeholder="Title">
+                    <textarea placeholder="Text (optional)"></textarea>
+                </form>
             </div>
+            <button id="post_submit" class="post_submit_button" type="submit">Post</button>
         </div>
     </section>
-    <script src="../javascript/post.js"></script>
-    <script src="../javascript/home.js"></script>
-    <script src="../javascript/helpers.js"></script>
 </body>
 
 </html>

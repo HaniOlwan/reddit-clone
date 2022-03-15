@@ -11,7 +11,7 @@ router.post('/api/v1/signup', signupController);
 router.post('/api/v1/user/logout', logoutUser);
 router.get('/', ensureAuthenticated, page.homePage);
 router.get('/api/v1/posts', homeController);
-router.post('/api/v1/post', postController);
 router.get('/post', page.createPostPage);
+router.post('/api/v1/post', postController);
 
 module.exports = router;
