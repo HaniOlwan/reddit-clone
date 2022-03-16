@@ -37,6 +37,7 @@ window.onscroll = function (ev) {
 const homeContent = document.querySelector('.home_content');
 
 const createPost = (info) => {
+  // console.log(info);
   const post = document.createElement('div');
   post.className = 'user_post';
   const postTop = document.createElement('div');
@@ -59,6 +60,7 @@ const createPost = (info) => {
   const editIcon = document.createElement('img');
   editIcon.className = 'icon';
   editPost.innerHTML = 'Edit';
+  postIcons.setAttribute('post_id', info.id);
   editPost.appendChild(editIcon);
   postIcons.appendChild(deletePost);
   postIcons.appendChild(editPost);
@@ -88,6 +90,17 @@ const createPost = (info) => {
   postBody.appendChild(postDesc);
   post.appendChild(postBody);
   homeContent.appendChild(post);
-  console.log(post);
 };
 renderPosts();
+
+window.onload = (event) => {
+  const cookie = document.cookie.split('=')[1];
+  const parseJwt = (token) => {
+    try {
+      return console.log(JSON.parse(atob(token.split('.')[1])));
+    } catch (e) {
+      return null;
+    }
+  };
+  parseJwt(cookie);
+};
