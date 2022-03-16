@@ -9,25 +9,25 @@ const signupController = (req, res) => {
     password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
   });
   const { name, email, password } = req.body;
-  schema.validateAsync({ email, password }).then(() =>
-    findUser(email)
-      .catch('User already exists')
-      .then(() =>
-        hashPassword(password)
-          .then((hashedPassword) => {
-            registerUser(name, email, hashedPassword)
-              .then((user) => {
-                res.cookie('token', createUserToken(user.rows[0]));
-                res.json({
-                  msg: `Welcome ${name}`,
-                  status: 200,
-                });
-              })
-              .catch('User Already exists');
-          })
-          .catch('Password Couldnt be hashed')
-      )
-  );
+  schema
+    .validateAsync({ email, password })
+    .then(() => findUser(email))
+    .then((result) => {
+      if (result.rows[0].exists === true) {
+        throw new Error('User exists');
+      }
+      hashPassword(password)
+        .then((hashedPassword) => registerUser(name, email, hashedPassword))
+        .then((user) => {
+          res
+            .status(201)
+            .cookie('token', createUserToken(user.rows[0]))
+            .json({
+              msg: `Welcome ${user.name}`,
+            });
+        });
+    })
+    .catch((err) => console.log(err));
 };
 
 module.exports = signupController;
