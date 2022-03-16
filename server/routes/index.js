@@ -17,4 +17,6 @@ router.post('/api/v1/user/logout', logoutUser);
 router.get('/api/v1/posts', homeController); // test
 router.post('/api/v1/user/post', postController);
 
+router.use(page.notFoundPage);
+
 module.exports = router;

@@ -1,0 +1,36 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.nav_bar {
+  height: 50px;
+  border: 1px solid rgb(73, 72, 72);
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #cee3f8;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo h1 {
+  margin-right: 10px;
+}
+
+.hero_text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.hero_image {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
