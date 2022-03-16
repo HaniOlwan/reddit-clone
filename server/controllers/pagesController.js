@@ -16,4 +16,10 @@ const createPostPage = (req, res) => {
   res.sendFile(path.join(__dirname, '..', '..', 'public', 'pages', 'createpost.html'));
 };
 
-module.exports = { homePage, loginPage, signupPage, createPostPage };
+const notFoundPage = (req, res) => {
+  res.sendFile(
+    path.join(__dirname, '..', '..', 'public', 'pages', 'error_pages', '404.html')
+  );
+};
+
+module.exports = { homePage, loginPage, signupPage, createPostPage, notFoundPage };
