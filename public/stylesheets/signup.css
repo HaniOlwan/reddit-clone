@@ -69,12 +69,14 @@ input:focus {
   flex-direction: column;
 }
 
-.register_button {
+.register_button,
+.signin_button {
   border-radius: 5px;
   border: none;
   width: 200px;
   height: 35px;
   color: whitesmoke;
+  margin-top: 5px;
   background-color: #0079d3;
 }
 .login_text_link {

@@ -9,7 +9,5 @@ signupForm.addEventListener('submit', (e) => {
   };
   fetchData('/api/v1/signup', 'POST', data)
     .then((response) => response.json())
-    .then((result) => {
-      return result.status === 200 ? (window.location.href = '/') : '';
-    });
+    .then((result) => (result.status === 200 ? (window.location.href = '/') : ''));
 });
