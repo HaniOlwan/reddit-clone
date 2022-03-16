@@ -80,7 +80,6 @@ input:focus {
 
 .post_info {
   display: flex;
-  width: 100%;
 }
 
 .post_username,
@@ -140,4 +139,21 @@ textarea {
   resize: none;
   margin: 10px 0;
   outline: none;
+}
+.post_icons {
+  display: flex;
+  flex-direction: row;
+}
+.icon_link {
+  text-decoration: none;
+}
+.post_top {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+.icon {
+  height: 16px;
+  margin-right: 10px;
 }
