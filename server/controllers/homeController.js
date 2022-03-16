@@ -1,5 +1,5 @@
-const postsQuery = require('../database/queries/postsQuery');
+const renderPosts = require('../database/queries/post/postsQueries');
 
 const homeController = (req, res) =>
-  postsQuery(req.query).then((posts) => res.json(posts.rows));
+  renderPosts(req.query).then((posts) => res.json(posts.rows));
 module.exports = homeController;

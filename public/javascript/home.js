@@ -1,3 +1,7 @@
+const postForm = () => {
+  window.location.href = '/post';
+};
+
 const logout = document.querySelector('#logout');
 logout.addEventListener('click', (e) => {
   e.preventDefault();
