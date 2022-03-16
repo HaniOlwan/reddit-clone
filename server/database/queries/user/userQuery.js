@@ -19,7 +19,7 @@ const createPost = (title, body, userId) => {
 };
 
 const getUser = (email) => {
-  const sql = 'SELECT id,email,password FROM users WHERE email = $1';
+  const sql = 'SELECT * FROM users WHERE email = $1';
   const values = [email];
   return connection.query(sql, values);
 };

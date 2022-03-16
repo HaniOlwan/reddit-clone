@@ -11,8 +11,13 @@ const signinController = (req, res) => {
       (user) =>
         new Promise((resolve, reject) => {
           bcrypt.compare(password, user[0].password, (err, match) => {
-            if (match) res.cookie('token', createUserToken(user[0]));
-            else {
+            if (match) {
+              res
+                .status(200)
+                .cookie('token', createUserToken(user[0]))
+                .json({ msg: `Welcome back ${user[0].name}` });
+            } else {
+              res.status(400).json({ msg: 'Email or password is incorrect' });
               reject(err);
             }
           });

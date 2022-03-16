@@ -20,7 +20,5 @@ signinForm.addEventListener('submit', (e) => {
     email: e.target.email.value,
     password: e.target.password.value,
   };
-  fetchData('/api/v1/signin', 'POST', data)
-    .then((response) => response.json())
-    .then((result) => (result.status === 200 ? (window.location.href = '/') : ''));
+  fetchData('/api/v1/signin', 'POST', data).then('IM IN FRONT').catch('CATCH IN FRONT');
 });
