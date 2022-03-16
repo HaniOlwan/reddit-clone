@@ -6,5 +6,7 @@ loginForm.addEventListener('submit', (e) => {
     email: e.target.email.value,
     password: e.target.password.value,
   };
-  fetchData('/api/v1/login', 'POST', data).then((window.location.href = '/'));
+  fetchData('/api/v1/login', 'POST', data).then((result) => {
+    window.location.href = '/';
+  });
 });
