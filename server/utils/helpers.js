@@ -19,8 +19,7 @@ const createUserToken = (payload) => {
   return token;
 };
 
-const handleError = (data) => {
-  const { msg, status } = data;
+const handleError = (msg, status) => {
   const error = new Error(msg);
   error.code = status;
   throw error;
