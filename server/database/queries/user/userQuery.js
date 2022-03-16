@@ -12,16 +12,10 @@ const registerUser = (name, email, password) => {
   return connection.query(sql, values);
 };
 
-const createPost = (title, body, userId) => {
-  const sql = 'INSERT INTO posts (title,body,user_id) VALUES ($1,$2,$3);';
-  const values = [title, body, userId];
-  return connection.query(sql, values);
-};
-
 const getUser = (email) => {
   const sql = 'SELECT * FROM users WHERE email = $1';
   const values = [email];
   return connection.query(sql, values);
 };
 
-module.exports = { findUser, registerUser, createPost, getUser };
+module.exports = { findUser, registerUser, getUser };

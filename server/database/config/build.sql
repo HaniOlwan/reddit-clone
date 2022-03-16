@@ -12,9 +12,9 @@ BEGIN;
 
     CREATE TABLE posts (
     id SERIAL PRIMARY KEY,
-    title VARCHAR(225),
-    body TEXT NOT NULL,
-    created_at timestamp NOT NULL DEFAULT NOW(),
+    title VARCHAR(225) NOT NULL,
+    body TEXT,
+    created_at timestamp DEFAULT NOW(),
     user_id INT,
     FOREIGN KEY (user_id) REFERENCES users(id));
 
