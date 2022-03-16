@@ -1,8 +1,8 @@
 const bcrypt = require('bcryptjs');
 const { getUser } = require('../../database/queries/user/userQuery');
-const { hashPassword, createUserToken } = require('../../utils/helpers');
+const { createUserToken } = require('../../utils/helpers');
 
-const signinController = (req, res) => {
+const loginController = (req, res) => {
   const { email, password } = req.body;
 
   getUser(email)
@@ -26,4 +26,4 @@ const signinController = (req, res) => {
     .catch('User doesnt exist');
 };
 
-module.exports = signinController;
+module.exports = loginController;

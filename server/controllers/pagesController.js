@@ -4,8 +4,8 @@ const homePage = (req, res) => {
   res.sendFile(path.join(__dirname, '..', '..', 'public', 'pages', 'index.html'));
 };
 
-const signinPage = (req, res) => {
-  res.sendFile(path.join(__dirname, '..', '..', 'public', 'pages', 'signin.html'));
+const loginPage = (req, res) => {
+  res.sendFile(path.join(__dirname, '..', '..', 'public', 'pages', 'login.html'));
 };
 
 const signupPage = (req, res) => {
@@ -16,4 +16,4 @@ const createPostPage = (req, res) => {
   res.sendFile(path.join(__dirname, '..', '..', 'public', 'pages', 'createpost.html'));
 };
 
-module.exports = { homePage, signinPage, signupPage, createPostPage };
+module.exports = { homePage, loginPage, signupPage, createPostPage };
