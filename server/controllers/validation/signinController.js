@@ -11,29 +11,22 @@ const loginController = (req, res, next) => {
   const { email, password } = req.body;
   schema
     .validateAsync({ email, password })
-    .then(() =>
-      getUser(email)
-        .then((users) => users.rows)
-        .then(
-          (user) =>
-            new Promise((resolve, reject) => {
-              bcrypt.compare(password, user[0].password, (err, match) => {
-                if (match) {
-                  res
-                    .status(201)
-                    .cookie('token', createUserToken(user[0]))
-                    .json({ msg: `Welcome back ${user[0].name}` });
-                } else {
-                  res.status(400).json({ msg: 'Email or password is incorrect' });
-                  reject(err);
-                }
-              });
-            })
-        )
-        .catch("Email isn't registered")
-    )
-
-    .catch('could not validate input');
+    .then(() => getUser(email))
+    .then((user) => {
+      if (user.rows.length === 0) {
+        throw new Error('User not found');
+      } else {
+        bcrypt.compare(password, user.rows[0].password, (err, match) => {
+          if (match) {
+            res
+              .status(201)
+              .cookie('token', createUserToken(user.rows[0]))
+              .json({ msg: `Welcome back ${user.rows[0].name}` });
+          }
+        });
+      }
+    })
+    .catch((err) => console.log(err));
 };
 
 module.exports = loginController;
