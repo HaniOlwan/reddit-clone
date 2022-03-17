@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -25,21 +24,56 @@
         </div>
     </nav>
     <section class="home_content">
-        <h1>Create a post</h1>
+        <h1>Edit your post</h1>
+        <!-- <h3 style="color:red">This is not your post</h3> -->
         <div class="user_post">
             <div class="post_info">
                 <img class="post_avatar" src="../../images/avatar.png" alt="POST AVATAR HERE" height="20px">
                 <small class="post_username">u/heenoow</small>
             </div>
             <div class="post_body">
-                <form id="post_form">
-                    <input type="text" id="post" name="title" placeholder="Title">
-                    <textarea name="body" placeholder="Text (optional)"></textarea>
+                <form id="edit_form">
+                    <input type="text" id="title" name="title" placeholder="Title">
+                    <textarea id="body" name="body" placeholder="Text (optional)"></textarea>
                     <button class="post_submit_button">Edit</button>
                 </form>
             </div>
         </div>
     </section>
+    <script>
+        const title = document.querySelector('#title');
+        const body = document.querySelector('#body');
+
+        const url = ((window.location).href).split('/');
+        const post = url[url.length - 1];
+        //   send post id to database to fetch the data of the post
+        fetch(`/api/v1/edit/post/${post}`, { method: 'POST' })
+            .then((result) => result.json())
+            .then((post) => {
+                title.value = post.title;
+                body.value = post.body;
+            })
+            .catch(console.log);
+
+        const updatePost = () => {
+
+        }
+
+        const form = document.querySelector('#edit_form');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = {
+                title: e.target.title.value,
+                body: e.target.body.value.replace(/\s/g, ' ').trim(),
+            };
+
+            fetchData('/api/v1/user/post', 'POST', data)
+                .then((window.location.href = '/'))
+                .catch(console.log);
+        })
+
+    </script>
 
 </body>
 

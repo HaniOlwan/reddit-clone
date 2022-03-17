@@ -64,7 +64,7 @@ const createPost = (info) => {
   postIcons.className = 'post_icons';
   const deletePost = document.createElement('a');
   deletePost.href = 'javascript:;';
-  deletePost.setAttribute('onclick', `return deletePost(${info.id})`);
+  deletePost.setAttribute('onclick', `return deletePostFunc(${info.id})`);
   deletePost.className = 'icon_link';
   const deleteIcon = document.createElement('img');
   deleteIcon.className = 'icon';
@@ -72,8 +72,9 @@ const createPost = (info) => {
   deletePost.innerHTML = 'Remove';
   deletePost.appendChild(deleteIcon);
   const editPost = document.createElement('a');
-  editPost.href = `/post/${info.id}`;
   editPost.className = 'icon_link';
+  editPost.href = 'javascript:;';
+  editPost.setAttribute('onclick', `return editPostFunc(${info.id})`);
   const editIcon = document.createElement('img');
   editIcon.className = 'icon';
   editPost.innerHTML = 'Edit';
@@ -112,11 +113,8 @@ const createPost = (info) => {
 };
 renderPosts();
 
-const deletePost = (post) => {
+const deletePostFunc = (post) => {
   fetch(`/api/v1/delete/${post}`, { method: 'DELETE' }).then(
     console.log('Element Deleted')
   );
-};
-const editPost = (post) => {
-  fetch(`/api/v1/post/${post}`, { method: 'POST' }).then(console.log('Element edited'));
 };
