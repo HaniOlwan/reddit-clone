@@ -73,12 +73,10 @@ const createPost = (info) => {
   deletePost.appendChild(deleteIcon);
   const editPost = document.createElement('a');
   editPost.className = 'icon_link';
-  editPost.href = 'javascript:;';
-  editPost.setAttribute('onclick', `return editPostFunc(${info.id})`);
+  editPost.href = `/edit/post/${info.id}`;
   const editIcon = document.createElement('img');
   editIcon.className = 'icon';
   editPost.innerHTML = 'Edit';
-  // postIcons.setAttribute('post_id', info.id);
   editPost.appendChild(editIcon);
   postIcons.appendChild(deletePost);
   postIcons.appendChild(editPost);

@@ -58,6 +58,8 @@
 
 
         const form = document.querySelector('#edit_form');
+        const warning = document.querySelector('#error_message');
+
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -72,6 +74,19 @@
                     'Content-type': 'application/json',
                 },
                 body: JSON.stringify(data),
+            }).then((response) => {
+                if (response.status == 200) {
+                    warning.style.display = "none";
+                } else if (response.status == 401) {
+                    warning.style.display = "block";
+                } else if (response.status == 422) {
+                    warning.textContent = "Make sure your input is correct";
+                    warning.style.display = "block";
+                } else {
+                    warning.textContent = "Something went wrong";
+                    warning.style.display = "block";
+                }
+
             })
         })
 

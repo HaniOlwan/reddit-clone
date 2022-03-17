@@ -18,11 +18,11 @@ const editPostController = (req, res) => {
     const userId = user.id;
     whoIsTheUser(userId, postId).then((result) => {
       if (result.rowCount === 0) {
-        res.send(401).json({ msg: "This post isn't yours to edit" });
+        res.send(401);
       } else {
-        updatePost(title, body, postId)
-          .then(console.log('updated successfully'))
-          .catch((err) => console.log(err));
+        updatePost(title, body, postId).catch(() => {
+          res.send(422);
+        });
       }
     });
   });
