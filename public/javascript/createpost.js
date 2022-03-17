@@ -26,8 +26,8 @@ postForm.addEventListener('submit', (e) => {
     warning.textContent = 'Make sure to fill all the inputs';
     warning.style.display = 'block';
   } else {
-    fetchData('/api/v1/user/post', 'POST', data)
-      .then((window.location.href = '/'))
-      .catch(console.log);
+    fetchData('/api/v1/user/post', 'POST', data).then(() => {
+      window.location.href = '/';
+    });
   }
 });
