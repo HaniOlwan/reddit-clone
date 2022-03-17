@@ -72,7 +72,7 @@ const createPost = (info) => {
   deletePost.innerHTML = 'Remove';
   deletePost.appendChild(deleteIcon);
   const editPost = document.createElement('a');
-  editPost.href = `/api/v1/post/edit/${info.id}`;
+  editPost.href = `/post/${info.id}`;
   editPost.className = 'icon_link';
   const editIcon = document.createElement('img');
   editIcon.className = 'icon';
@@ -116,4 +116,7 @@ const deletePost = (post) => {
   fetch(`/api/v1/delete/${post}`, { method: 'DELETE' }).then(
     console.log('Element Deleted')
   );
+};
+const editPost = (post) => {
+  fetch(`/api/v1/post/${post}`, { method: 'POST' }).then(console.log('Element edited'));
 };

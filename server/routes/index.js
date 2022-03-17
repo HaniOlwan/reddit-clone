@@ -13,6 +13,8 @@ router.get('/login', page.loginPage);
 router.get('/signup', page.signupPage);
 router.get('/', ensureAuthenticated, page.homePage);
 router.get('/post', ensureAuthenticated, page.createPostPage);
+router.get('/edit/post/:post', ensureAuthenticated, page.editPostPage);
+// router.post('/edit/post/:post', updatepost);
 
 router.post('/api/v1/login', loginController);
 router.post('/api/v1/signup', signupController);
@@ -21,6 +23,9 @@ router.get('/api/v1/posts', homeController); // test
 router.get('/api/v1/posts/:post', getPostController); // test
 router.post('/api/v1/user/post', postController);
 router.delete('/api/v1/delete/:post', deletePost);
+// router.delete('/api/v1/e/:post', deletePost);
+
+// router.delete('/api/v1/edit/:post', deletePost);
 
 router.use(page.notFoundPage);
 

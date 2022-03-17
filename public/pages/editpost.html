@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit</title>
+    <link rel="icon" href="../../images/reddit-1.svg" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="../../stylesheets/index.css">
+</head>
+
+<body>
+    <nav>
+        <a href="/"> <img src="../../images/reddit-1.svg" alt="LOGO HERE" height="26px"></a>
+        <div class="user_info">
+            <div class="dropdown">
+                <img src="../../images/ellipsis-solid (1).svg" alt="LOGO HERE" height="26px">
+                <div class="dropdown-content">
+                    <button id="logout">Logout</button>
+                </div>
+            </div>
+            <img src="../../images/avatar.png" alt="AVATAR HERE" height="40px">
+            <div id="username">heenoow</div>
+        </div>
+    </nav>
+    <section class="home_content">
+        <h1>Create a post</h1>
+        <div class="user_post">
+            <div class="post_info">
+                <img class="post_avatar" src="../../images/avatar.png" alt="POST AVATAR HERE" height="20px">
+                <small class="post_username">u/heenoow</small>
+            </div>
+            <div class="post_body">
+                <form id="post_form">
+                    <input type="text" id="post" name="title" placeholder="Title">
+                    <textarea name="body" placeholder="Text (optional)"></textarea>
+                    <button class="post_submit_button">Edit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
