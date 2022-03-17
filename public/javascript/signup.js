@@ -7,8 +7,7 @@ signupForm.addEventListener('submit', (e) => {
     email: e.target.email.value,
     password: e.target.password.value,
   };
-  fetchData('/api/v1/signup', 'POST', data).then((response) => {
-    if (response.status === 201) {
-      window.location.href = '/';
+  fetchData('/api/v1/signup', 'POST', data).then(() => {
+    return (window.location.href = '/');
   });
 });
