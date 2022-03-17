@@ -9,7 +9,7 @@ const renderPosts = (query) => {
   }
 
   return connection.query(
-    'SELECT p.id, p.title, p.body, p.created_at, u.name FROM posts as p JOIN users as u ON (p.user_id=u.id) ORDER BY p.id DESC LIMIT $1 OFFSET $2;',
+    'SELECT p.user_id ,p.id, p.title, p.body, p.created_at, u.name FROM posts as p JOIN users as u ON (p.user_id=u.id) ORDER BY p.id DESC LIMIT $1 OFFSET $2;',
     [limit, offset]
   );
 };

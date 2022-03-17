@@ -1,3 +1,20 @@
+let userId = 0;
+window.onload = (event) => {
+  const username = document.querySelector('#username');
+  const cookie = document.cookie.split('=')[1];
+  const parseJwt = (token) => {
+    try {
+      const user = JSON.parse(atob(token.split('.')[1]));
+      username.textContent = user.name;
+      userId = user.id;
+      return userId;
+    } catch (e) {
+      return null;
+    }
+  };
+  parseJwt(cookie);
+};
+
 const postForm = () => {
   window.location.href = '/post';
 };
@@ -37,7 +54,6 @@ window.onscroll = function (ev) {
 const homeContent = document.querySelector('.home_content');
 
 const createPost = (info) => {
-  // console.log(info);
   const post = document.createElement('div');
   post.className = 'user_post';
   const postTop = document.createElement('div');
@@ -84,7 +100,9 @@ const createPost = (info) => {
   postInfo.appendChild(username);
   postInfo.appendChild(postDate);
   postTop.appendChild(postInfo);
-  postTop.appendChild(postIcons);
+  if (info.user_id === userId) {
+    postTop.appendChild(postIcons);
+  }
   post.appendChild(postTop);
   postBody.appendChild(postTitle);
   postBody.appendChild(postDesc);
@@ -92,15 +110,3 @@ const createPost = (info) => {
   homeContent.appendChild(post);
 };
 renderPosts();
-
-window.onload = (event) => {
-  const cookie = document.cookie.split('=')[1];
-  const parseJwt = (token) => {
-    try {
-      return console.log(JSON.parse(atob(token.split('.')[1])));
-    } catch (e) {
-      return null;
-    }
-  };
-  parseJwt(cookie);
-};
