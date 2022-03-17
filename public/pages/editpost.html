@@ -1,0 +1,97 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit</title>
+    <link rel="icon" href="../../images/reddit-1.svg" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="../../stylesheets/index.css">
+</head>
+
+<body>
+    <nav>
+        <a href="/"> <img src="../../images/reddit-1.svg" alt="LOGO HERE" height="26px"></a>
+        <div class="user_info">
+            <div class="dropdown">
+                <img src="../../images/ellipsis-solid (1).svg" alt="LOGO HERE" height="26px">
+                <div class="dropdown-content">
+                    <button id="logout">Logout</button>
+                </div>
+            </div>
+            <img src="../../images/avatar.png" alt="AVATAR HERE" height="40px">
+            <div id="username">heenoow</div>
+        </div>
+    </nav>
+    <section class="home_content">
+        <h1>Edit your post</h1>
+        <h3 id="error_message" style="color:red;display: none;">This is not your post</h3>
+        <div class="user_post">
+            <div class="post_info">
+                <img class="post_avatar" src="../../images/avatar.png" alt="POST AVATAR HERE" height="20px">
+                <small class="post_username">u/heenoow</small>
+            </div>
+            <div class="post_body">
+                <form id="edit_form">
+                    <input type="text" id="title" name="title" placeholder="Title">
+                    <textarea id="body" name="body" placeholder="Text (optional)"></textarea>
+                    <button class="post_submit_button">Edit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script>
+
+        const title = document.querySelector('#title');
+        const body = document.querySelector('#body');
+
+        const url = ((window.location).href).split('/');
+        const post = url[url.length - 1];
+        //   send post id to database to fetch the data of the post
+        fetch(`/api/v1/edit/post/${post}`, { method: 'POST' })
+            .then((result) => result.json())
+            .then((post) => {
+                title.value = post.title;
+                body.value = post.body;
+            })
+            .catch(console.log);
+
+
+        const form = document.querySelector('#edit_form');
+        const warning = document.querySelector('#error_message');
+
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = {
+                title: e.target.title.value,
+                body: e.target.body.value.replace(/\s/g, ' ').trim(),
+            };
+
+            fetch(`/api/v1/edit/post/${post}`, {
+                method: "PUT",
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            }).then((response) => {
+                if (response.status == 200) {
+                    warning.style.display = "none";
+                } else if (response.status == 401) {
+                    warning.style.display = "block";
+                } else if (response.status == 422) {
+                    warning.textContent = "Make sure your input is correct";
+                    warning.style.display = "block";
+                } else {
+                    warning.textContent = "Something went wrong";
+                    warning.style.display = "block";
+                }
+
+            })
+        })
+
+    </script>
+
+</body>
+
+</html>
