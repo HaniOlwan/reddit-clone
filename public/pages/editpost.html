@@ -25,7 +25,7 @@
     </nav>
     <section class="home_content">
         <h1>Edit your post</h1>
-        <!-- <h3 style="color:red">This is not your post</h3> -->
+        <h3 id="error_message" style="color:red;display: none;">This is not your post</h3>
         <div class="user_post">
             <div class="post_info">
                 <img class="post_avatar" src="../../images/avatar.png" alt="POST AVATAR HERE" height="20px">
@@ -41,6 +41,7 @@
         </div>
     </section>
     <script>
+
         const title = document.querySelector('#title');
         const body = document.querySelector('#body');
 
@@ -55,9 +56,6 @@
             })
             .catch(console.log);
 
-        const updatePost = () => {
-
-        }
 
         const form = document.querySelector('#edit_form');
 
@@ -68,9 +66,13 @@
                 body: e.target.body.value.replace(/\s/g, ' ').trim(),
             };
 
-            fetchData('/api/v1/user/post', 'POST', data)
-                .then((window.location.href = '/'))
-                .catch(console.log);
+            fetch(`/api/v1/edit/post/${post}`, {
+                method: "PUT",
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
         })
 
     </script>
