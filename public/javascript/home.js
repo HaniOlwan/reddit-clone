@@ -111,8 +111,23 @@ const createPost = (info) => {
 };
 renderPosts();
 
+const success = document.querySelector('#success');
 const deletePostFunc = (post) => {
-  fetch(`/api/v1/delete/${post}`, { method: 'DELETE' }).then(
-    console.log('Element Deleted')
-  );
+  fetch(`/api/v1/delete/${post}`, { method: 'DELETE' }).then((response) => {
+    if (response.status === 202) {
+      success.style.display = 'block';
+      success.textContent = 'Post deleted successfully';
+      setTimeout(() => {
+        success.style.display = 'none';
+        window.location.href = '/';
+      }, 1000);
+    } else {
+      success.style.display = 'block';
+      success.textContent = 'Sorry something went wrong';
+      window.location.href = '/';
+      setTimeout(() => {
+        success.style.display = 'none';
+      }, 1500);
+    }
+  });
 };
