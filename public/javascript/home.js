@@ -1,3 +1,20 @@
+let userId = 0;
+window.onload = (event) => {
+  const username = document.querySelector('#username');
+  const cookie = document.cookie.split('=')[1];
+  const parseJwt = (token) => {
+    try {
+      const user = JSON.parse(atob(token.split('.')[1]));
+      username.textContent = user.name;
+      userId = user.id;
+      return userId;
+    } catch (e) {
+      return null;
+    }
+  };
+  parseJwt(cookie);
+};
+
 const postForm = () => {
   window.location.href = '/post';
 };
@@ -39,8 +56,31 @@ const homeContent = document.querySelector('.home_content');
 const createPost = (info) => {
   const post = document.createElement('div');
   post.className = 'user_post';
+  const postTop = document.createElement('div');
+  postTop.classList = 'post_top';
   const postInfo = document.createElement('div');
   postInfo.className = 'post_info';
+  const postIcons = document.createElement('div');
+  postIcons.className = 'post_icons';
+  const deletePost = document.createElement('a');
+  deletePost.href = 'javascript:;';
+  deletePost.setAttribute('onclick', `return deletePost(${info.id})`);
+  deletePost.className = 'icon_link';
+  const deleteIcon = document.createElement('img');
+  deleteIcon.className = 'icon';
+  deleteIcon.height = '16px';
+  deletePost.innerHTML = 'Remove';
+  deletePost.appendChild(deleteIcon);
+  const editPost = document.createElement('a');
+  editPost.href = `/api/v1/post/edit/${info.id}`;
+  editPost.className = 'icon_link';
+  const editIcon = document.createElement('img');
+  editIcon.className = 'icon';
+  editPost.innerHTML = 'Edit';
+  // postIcons.setAttribute('post_id', info.id);
+  editPost.appendChild(editIcon);
+  postIcons.appendChild(deletePost);
+  postIcons.appendChild(editPost);
   const avatar = document.createElement('img');
   avatar.className = 'post_avatar';
   avatar.src = 'images/avatar.png';
@@ -60,10 +100,20 @@ const createPost = (info) => {
   postInfo.appendChild(avatar);
   postInfo.appendChild(username);
   postInfo.appendChild(postDate);
-  post.appendChild(postInfo);
+  postTop.appendChild(postInfo);
+  if (info.user_id === userId) {
+    postTop.appendChild(postIcons);
+  }
+  post.appendChild(postTop);
   postBody.appendChild(postTitle);
   postBody.appendChild(postDesc);
   post.appendChild(postBody);
   homeContent.appendChild(post);
 };
 renderPosts();
+
+const deletePost = (post) => {
+  fetch(`/api/v1/delete/${post}`, { method: 'DELETE' }).then(
+    console.log('Element Deleted')
+  );
+};
