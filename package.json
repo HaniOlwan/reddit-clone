@@ -4,8 +4,8 @@
   "description": "a simple reddit clone to test my progress over the 8 weeks",
   "main": "index.js",
   "scripts": {
-    "start": "node cross_env NODE_ENV=production server/index.js",
-    "dev": "nodemon server/index.js",
+    "start": "cross_env NODE_ENV=production node server/index.js",
+    "dev": "cross-env NODE_ENV=dev nodemon server/index.js",
     "test": "cross-env NODE_ENV=test jest"
   },
   "repository": {
