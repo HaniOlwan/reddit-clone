@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const { ACCESS_TOKEN_KEY } = require('../../config');
+
+const { ACCESS_TOKEN_KEY } = process.env.ACCESS_TOKEN_KEY;
 const whoIsTheUser = require('../database/queries/post/whoIsTheUser');
 
 const getPost = require('../database/queries/post/getPost');

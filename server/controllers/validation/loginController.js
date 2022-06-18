@@ -1,12 +1,12 @@
 const Joi = require('joi');
 const bcrypt = require('bcryptjs');
 const { getUser } = require('../../database/queries/user/userQuery');
-const { createUserToken, handleError } = require('../../utils/helpers');
+const { createUserToken } = require('../../utils/helpers');
 
-const loginController = (req, res, next) => {
+const loginController = (req, res) => {
   const schema = Joi.object({
     email: Joi.string().email({ tlds: { allow: true } }),
-    password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
+    password: Joi.string().min(3),
   });
   const { email, password } = req.body;
   schema

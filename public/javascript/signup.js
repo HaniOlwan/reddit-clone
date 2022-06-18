@@ -7,7 +7,11 @@ signupForm.addEventListener('submit', (e) => {
     email: e.target.email.value,
     password: e.target.password.value,
   };
-  fetchData('/api/v1/signup', 'POST', data).then(() => {
-    return (window.location.href = '/');
+  fetch('/api/v1/signup', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(data),
   });
 });
