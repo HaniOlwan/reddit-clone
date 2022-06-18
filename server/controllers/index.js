@@ -1,4 +1,29 @@
 const homeController = require('./homeController');
-const postController = require('./postController');
+const {
+  homePage, loginPage, signupPage, createPostPage, editPostPage, notFoundPage,
+} = require('./pagesController');
 
-module.exports = { homeController, postController };
+const {
+  createPostController, editPostController, deletePostController, getPostController,
+} = require('./post');
+const { signupController, loginController, logoutController } = require('./validation');
+
+module.exports = {
+  homePage,
+  loginPage,
+  signupPage,
+  createPostPage,
+  editPostPage,
+  notFoundPage,
+};
+
+module.exports = {
+  signupController,
+  loginController,
+  getPostController,
+  createPostController,
+  deletePostController,
+  editPostController,
+  homeController,
+  logoutController,
+};

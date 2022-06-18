@@ -1,15 +1,8 @@
 const jwt = require('jsonwebtoken');
+const updatePost = require('../../database/queries/post/updatePostQuery');
+const whoIsTheUser = require('../../database/queries/post/whoIsTheUser');
 
-const { ACCESS_TOKEN_KEY } = process.env.ACCESS_TOKEN_KEY;
-const whoIsTheUser = require('../database/queries/post/whoIsTheUser');
-
-const getPost = require('../database/queries/post/getPost');
-const updatePost = require('../database/queries/post/updatePostQuery');
-
-const getPostController = (req, res) => {
-  const { post } = req.params;
-  getPost(post).then((result) => res.json(result.rows[0]));
-};
+const { ACCESS_TOKEN_KEY } = process.env;
 
 const editPostController = (req, res) => {
   const postId = req.params.post;
@@ -33,4 +26,4 @@ const editPostController = (req, res) => {
   });
 };
 
-module.exports = { getPostController, editPostController };
+module.exports = editPostController;
