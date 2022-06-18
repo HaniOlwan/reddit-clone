@@ -1,6 +1,6 @@
 const { findUser, registerUser } = require('../../database/queries/user/userQuery');
 const { hashPassword, createUserToken } = require('../../utils/helpers');
-const { signInSchema } = require('../../utils/signinSchema');
+const { signInSchema } = require('../../utils/signupSchema');
 
 const signUpController = (req, res) => {
   const { name, email, password } = req.body;

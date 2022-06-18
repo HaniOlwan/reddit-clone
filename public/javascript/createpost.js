@@ -6,7 +6,7 @@ window.onload = (event) => {
     try {
       const user = JSON.parse(atob(token.split('.')[1]));
       username.textContent = user.name;
-      postUsername.textContent = 'u/' + user.name;
+      postUsername.textContent = `u/${user.name}`;
     } catch (e) {
       return null;
     }
@@ -26,7 +26,13 @@ postForm.addEventListener('submit', (e) => {
     warning.textContent = 'Make sure to fill all the inputs';
     warning.style.display = 'block';
   } else {
-    fetchData('/api/v1/user/post', 'POST', data).then(() => {
+    fetch('/api/v1/post/create', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }).then(() => {
       window.location.href = '/';
     });
   }

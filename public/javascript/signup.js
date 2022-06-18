@@ -13,5 +13,7 @@ signupForm.addEventListener('submit', (e) => {
       'Content-type': 'application/json',
     },
     body: JSON.stringify(data),
+  }).then(() => {
+    window.location.href = '/';
   });
 });

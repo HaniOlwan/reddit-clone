@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const { ACCESS_TOKEN_KEY } = process.env.ACCESS_TOKEN_KEY;
+const { ACCESS_TOKEN_KEY } = process.env;
 
 const ensureAuthenticated = (req, res, next) => {
   const { token } = req.cookies;

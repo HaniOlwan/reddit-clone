@@ -1,15 +1,11 @@
-const Joi = require('joi');
 const bcrypt = require('bcryptjs');
 const { getUser } = require('../../database/queries/user/userQuery');
 const { createUserToken } = require('../../utils/helpers');
+const signinSchema = require('../../utils/signinSchema');
 
-const loginController = (req, res) => {
-  const schema = Joi.object({
-    email: Joi.string().email({ tlds: { allow: true } }),
-    password: Joi.string().min(3),
-  });
+const loginController = (req, res, next) => {
   const { email, password } = req.body;
-  schema
+  signinSchema
     .validateAsync({ email, password })
     .then(() => getUser(email))
     .then((user) => {
@@ -22,11 +18,13 @@ const loginController = (req, res) => {
               .status(201)
               .cookie('token', createUserToken(user.rows[0]))
               .json({ msg: `Welcome back ${user.rows[0].name}` });
+          } else {
+            throw new Error("Password doesn't match");
           }
         });
       }
     })
-    .catch((err) => console.log(err));
+    .catch((err) => next(err));
 };
 
 module.exports = loginController;

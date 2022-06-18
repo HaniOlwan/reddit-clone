@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
-const createPost = require('../../database/queries/post/createPostQuery');
+const createPostQuery = require('../../database/queries/post/createPostQuery');
 
-const { ACCESS_TOKEN_KEY } = process.env.ACCESS_TOKEN_KEY;
+const { ACCESS_TOKEN_KEY } = process.env;
 
 const createPostController = (req, res) => {
   const token = req.headers.cookie.split('=')[1];
@@ -9,7 +9,8 @@ const createPostController = (req, res) => {
     if (err) return err;
     const { title, body } = req.body;
     const { id } = user;
-    return createPost(title, body, id).then(() => res.status(200).json({ msg: 'Post created' }));
+    return createPostQuery(title, body, id).then(() => res.status(200).json({ msg: 'Post created' }))
+      .catch(() => res.status(400).json({ msg: 'Failed to create post.' }));
   });
 };
 
