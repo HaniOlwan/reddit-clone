@@ -7,14 +7,13 @@ loginForm.addEventListener('submit', (e) => {
     password: e.target.password.value,
   };
 
-  fetch('/api/v1/login', {
+  fetch('/api/v1/signup', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
     },
     body: JSON.stringify(data),
-  }).then((response) => {
-    console.log(response);
-    // window.location.href = '/';
+  }).then(() => {
+    window.location.href = '/';
   });
 });

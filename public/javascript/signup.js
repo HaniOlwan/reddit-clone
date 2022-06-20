@@ -14,6 +14,6 @@ signupForm.addEventListener('submit', (e) => {
     },
     body: JSON.stringify(data),
   }).then(() => {
-    window.location.href = '/';
-  });
+    // window.location.href = '/';
+  }).catch(console.log('HUUUUUUUUUUUUUu'));
 });
