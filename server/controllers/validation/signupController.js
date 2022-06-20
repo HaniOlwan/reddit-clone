@@ -2,9 +2,8 @@ const Joi = require('joi');
 const { findUser, registerUser } = require('../../database/queries/user/userQuery');
 const CustomError = require('../../utils/customError');
 const { hashPassword, createUserToken } = require('../../utils/helpers');
-// const { signInSchema } = require('../../utils/signupSchema');
 
-const signUpController = (req, res, next) => {
+const signupController = (req, res, next) => {
   const { name, email, password } = req.body;
 
   const signupSchema = Joi.object({
@@ -32,4 +31,4 @@ const signUpController = (req, res, next) => {
     .catch((err) => next(err));
 };
 
-module.exports = signUpController;
+module.exports = signupController;

@@ -78,6 +78,7 @@ input:focus {
   color: whitesmoke;
   margin-top: 5px;
   background-color: #0079d3;
+  cursor: pointer;
 }
 .login_text_link {
   text-decoration: none;
