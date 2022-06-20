@@ -1,5 +1,5 @@
 const signupForm = document.querySelector('#signup_form');
-
+const error = document.querySelector('.err_message');
 signupForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const data = {
@@ -13,7 +13,13 @@ signupForm.addEventListener('submit', (e) => {
       'Content-type': 'application/json',
     },
     body: JSON.stringify(data),
-  }).then(() => {
-    // window.location.href = '/';
-  }).catch(console.log('HUUUUUUUUUUUUUu'));
+  }).then((response) => {
+    if (response.status === 409) {
+      error.textContent = 'User already exists.';
+    } if (response.status === 201) {
+      window.location.href = '/';
+    } else {
+      error.textContent = 'Please make sure your input is correct.';
+    }
+  });
 });
