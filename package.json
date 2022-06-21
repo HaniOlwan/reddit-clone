@@ -26,17 +26,17 @@
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.0",
     "ejs": "^3.1.6",
+    "env2": "^2.2.2",
     "express": "^4.17.3",
     "joi": "^17.6.0",
-    "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
     "pg": "^8.7.3"
   },
   "devDependencies": {
-    "env2": "^2.2.2",
     "eslint": "^8.11.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
+    "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.15"
   }
 }
