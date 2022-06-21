@@ -13,7 +13,7 @@ if (NODE_ENV === 'test') {
   sslConnection = false;
 } else if (NODE_ENV === 'production') {
   dbUrl = DATABASE_URL;
-  sslConnection = { rejectUnauthorized: true };
+  sslConnection = { rejectUnauthorized: false };
 } else if (NODE_ENV === 'dev') {
   dbUrl = DEV_DB_URL;
   sslConnection = false;
