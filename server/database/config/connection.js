@@ -13,7 +13,9 @@ if (NODE_ENV === 'dev') { dbURL = DEV_DB_URL; } else if (NODE_ENV === 'test') { 
 
 const options = {
   connectionString: dbURL,
-  ssl: false,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 };
 
 module.exports = new Pool(options);
