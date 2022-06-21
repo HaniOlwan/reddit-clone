@@ -7,7 +7,7 @@ const router = require('./routes');
 const app = express();
 app.use(cookieParser());
 app.use(express.json());
-app.set('PORT', process.env.PORT || 3000);
+// app.set('PORT', process.env.PORT || 3000);
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(router);
 
