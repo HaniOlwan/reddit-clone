@@ -1,20 +1,21 @@
 const Joi = require('joi');
 const { findUser, registerUser } = require('../../database/queries/user/userQuery');
+const CustomError = require('../../utils/customError');
 const { hashPassword, createUserToken } = require('../../utils/helpers');
 
-const signupController = (req, res) => {
-  const schema = Joi.object({
-    name: Joi.string(),
-    email: Joi.string().email({ tlds: { allow: true } }),
-    password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
-  });
+const signupController = (req, res, next) => {
   const { name, email, password } = req.body;
-  schema
-    .validateAsync({ email, password })
+
+  const signupSchema = Joi.object({
+    name: Joi.string().required(),
+    email: Joi.string().email({ tlds: { allow: true } }).required(),
+    password: Joi.string().min(3).required(),
+  });
+  signupSchema.validateAsync({ name, email, password })
     .then(() => findUser(email))
     .then((result) => {
       if (result.rows[0].exists === true) {
-        throw new Error('User exists');
+        throw new CustomError('User Already exists', 409);
       }
       hashPassword(password)
         .then((hashedPassword) => registerUser(name, email, hashedPassword))
@@ -27,7 +28,7 @@ const signupController = (req, res) => {
             });
         });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => next(err));
 };
 
 module.exports = signupController;

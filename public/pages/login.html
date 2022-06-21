@@ -22,10 +22,11 @@
                     Agreement </a>and
                 <a class="text_link" href="">Privacy Policy</a>.
             </p>
+            <span class="err_message" style="color:red"></span>
             <form id="login_form" method="POST">
                 <div class="register_input">
-                    <input name="email" type="email" class="inputText" placeholder="EMAIL" />
-                    <input name="password" type="password" class="inputText" placeholder="PASSWORD" />
+                    <input name="email" type="email" class="inputText" placeholder="EMAIL" required/>
+                    <input name="password" type="password" class="inputText" placeholder="PASSWORD" minlength="3"/>
                 </div>
                 <button class="signin_button">LOG IN</button>
             </form>
@@ -34,6 +35,7 @@
     </section>
     <script src="../javascript/helpers.js"></script>
     <script src="../javascript/login.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </body>
 

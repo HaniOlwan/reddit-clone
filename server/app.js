@@ -3,7 +3,6 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
 const router = require('./routes');
-const { port } = require('../config');
 
 const app = express();
 app.use(cookieParser());
@@ -15,6 +14,7 @@ app.use(router);
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.send(err);
+  next();
 });
 
 module.exports = app;

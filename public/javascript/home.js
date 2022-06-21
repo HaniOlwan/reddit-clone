@@ -1,7 +1,7 @@
 let userId = 0;
 window.onload = (event) => {
   const username = document.querySelector('#username');
-  const cookie = document.cookie.split('=')[1];
+  const cookie = document.cookie.split(';')[1].split('=')[1];
   const parseJwt = (token) => {
     try {
       const user = JSON.parse(atob(token.split('.')[1]));
@@ -115,12 +115,10 @@ const success = document.querySelector('#success');
 const deletePostFunc = (post) => {
   fetch(`/api/v1/delete/${post}`, { method: 'DELETE' }).then((response) => {
     if (response.status === 202) {
-      success.style.display = 'block';
-      success.textContent = 'Post deleted successfully';
       setTimeout(() => {
-        success.style.display = 'none';
         window.location.href = '/';
-      }, 1000);
+        success.textContent = 'Post deleted successfully';
+      }, 500);
     } else {
       success.style.display = 'block';
       success.textContent = 'Sorry something went wrong';

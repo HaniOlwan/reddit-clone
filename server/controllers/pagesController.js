@@ -22,7 +22,7 @@ const editPostPage = (req, res) => {
 
 const notFoundPage = (req, res) => {
   res.sendFile(
-    path.join(__dirname, '..', '..', 'public', 'pages', 'error_pages', '404.html')
+    path.join(__dirname, '..', '..', 'public', 'pages', 'error_pages', '404.html'),
   );
 };
 

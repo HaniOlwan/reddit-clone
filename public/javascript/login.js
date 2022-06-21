@@ -1,4 +1,5 @@
 const loginForm = document.querySelector('#login_form');
+const error = document.querySelector('.err_message');
 
 loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -6,7 +7,18 @@ loginForm.addEventListener('submit', (e) => {
     email: e.target.email.value,
     password: e.target.password.value,
   };
-  fetchData('/api/v1/login', 'POST', data).then((result) => {
-    window.location.href = '/';
+
+  fetch('/api/v1/login', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  }).then((response) => {
+    if (response.status === 201) {
+      window.location.href = '/';
+    } else {
+      error.textContent = 'Please make sure your input is correct.';
+    }
   });
 });
