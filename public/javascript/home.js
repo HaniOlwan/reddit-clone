@@ -1,7 +1,8 @@
 let userId = 0;
 window.onload = (event) => {
   const username = document.querySelector('#username');
-  const cookie = document.cookie.split(';')[1].split('=')[1];
+  // const cookie = document.cookie.split(';')[1].split('=')[1];
+  const cookie = document.cookie.split('=')[1];
   const parseJwt = (token) => {
     try {
       const user = JSON.parse(atob(token.split('.')[1]));

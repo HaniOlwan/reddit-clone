@@ -3,7 +3,8 @@ const errMessage = document.querySelector('.error_message');
 window.onload = () => {
   const username = document.querySelector('#username');
   const postUsername = document.querySelector('.post_username');
-  const cookie = document.cookie.split(';')[1].split('=')[1];
+  // const cookie = document.cookie.split(';')[1].split('=')[1];
+  const cookie = document.cookie.split('=')[1];
   const parseJwt = (token) => {
     try {
       const user = JSON.parse(atob(token.split('.')[1]));
