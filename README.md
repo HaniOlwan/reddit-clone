@@ -1,12 +1,11 @@
 ### Tech Used 
 - Express
 - Postgresql
-- bcryptjs
+- bcrypt.js
 - jwt
 - joi
 
-### 
-[Live Link](https://reddit-hani.herokuapp.com/)
+#### [Live Link](https://reddit-hani.herokuapp.com/)
 
 
 
