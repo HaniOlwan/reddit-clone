@@ -6,7 +6,7 @@
 - joi
 
 ### 
-[https://reddit-hani.herokuapp.com/](Live Link)
+[Live Link](https://reddit-hani.herokuapp.com/)
 
 
 
